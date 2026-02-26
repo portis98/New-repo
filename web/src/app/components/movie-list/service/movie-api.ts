@@ -14,6 +14,6 @@ export class MovieApi {
     return this.http.get<Movie[]>(`${this.API_URL}`);
   }
   deleteMovie(movieId: number): Observable<Movie> {
-    return this.http.delete<Movie>(`${this.API_URL}/movies/${movieId}/`)
+    return this.http.delete<Movie>(`${this.API_URL}/${movieId}/`)
   }
 }
