@@ -7,7 +7,7 @@
  <!-- NEW! -->
  <div class="movie-container">
  @for(movie of movieList(); track $index){
- <app-movie-item [movie]="movie"></app-movie-item>
+ <app-movie-item [movie]="movie" (deleteMovieEvent)="onDeleteMovie(movie.id)"></app-movie-item>
  }@empty {
  <p>No movies found</p>
  }
