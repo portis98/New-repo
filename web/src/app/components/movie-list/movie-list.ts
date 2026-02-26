@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MovieItem } from './movie-item/movie-item';
 import { signal } from '@angular/core';
 import { MovieModal } from '../movie-modal/movie-modal';
+import { StreamingChannel } from '../../models/StreamingChannel';
 
 @Component({
   selector: 'app-movie-list',
@@ -35,6 +36,7 @@ export class MovieList implements OnInit, OnDestroy {
       })
     );
   }
+  channelList: WritableSignal<StreamingChannel[]> = signal<StreamingChannel[]>([]);
   onDeleteMovie(movieId: number): void {
     this.subscription.add(
       this.api.deleteMovie(movieId).subscribe({
@@ -42,6 +44,18 @@ export class MovieList implements OnInit, OnDestroy {
           throw Error(
             `Cannot connect to API: Error: ${e.status} - ${e.message}`
           );
+        },
+        complete: () => {
+          this.onGetMovieList();
+        }
+      })
+    );
+  }
+  onAddMovie(movie: Movie): void {
+    this.subscription.add(
+      this.api.addMovie(movie).subscribe({
+        error: (e: HttpErrorResponse) => {
+          console.log(e)
         },
         complete: () => {
           this.onGetMovieList();

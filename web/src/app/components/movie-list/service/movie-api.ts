@@ -22,5 +22,8 @@ export class MovieApi {
     `${this.API_URL}/movies/channels/`
     )
   };
+  addMovie(movie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(`${this.API_URL}/movies/`, movie)
+}
 }
   

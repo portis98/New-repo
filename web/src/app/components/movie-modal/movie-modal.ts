@@ -1,6 +1,7 @@
-import { Component, InputSignal, input } from '@angular/core';
+import { Component, EventEmitter, InputSignal, Output, input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { StreamingChannel } from '../../models/StreamingChannel';
+import { Movie } from '../../models/Movie';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class MovieModal {
  channelList: InputSignal<StreamingChannel[]> =
  input.required<StreamingChannel[]>();
 
+ @Output() addMovieEvent: EventEmitter<Movie> = new EventEmitter();
+ 
  constructor(private formBuilder: FormBuilder) {
     this.addMovieForm = this.formBuilder.group({
     title: [''],
@@ -23,6 +26,6 @@ export class MovieModal {
     });
   }
   onSubmit(): void {
-    console.log(this.addMovieForm.value);
+    this.addMovieEvent.emit(this.addMovieForm.value);
   }
 }

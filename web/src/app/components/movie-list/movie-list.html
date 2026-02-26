@@ -5,15 +5,15 @@
         <div class="row">
  <h2 class="fw-bold">Film</h2>
  <hr />
- <!-- NEW! -->
+
     <div class="movie-container">
         @for(movie of movieList(); track $index){
             <app-movie-item [movie]="movie" (deleteMovieEvent)="onDeleteMovie(movie.id)"></app-movie-item>
                 }@empty {
                     <p>No movies found</p>
             }
-            </div>
-                <app-movie-modal [channelList]="channelList()"></app-movie-modal>
+            </div>  
         </div>
     </div>
+    <app-movie-modal [channelList]="channelList()"></app-movie-modal>
 </div>
