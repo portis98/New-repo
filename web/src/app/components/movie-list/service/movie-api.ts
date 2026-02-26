@@ -9,8 +9,11 @@ import { Observable } from 'rxjs/internal/Observable';
 export class MovieApi {
   readonly API_URL: string = 'http://localhost:8000/api/movies'
   private http: HttpClient = inject(HttpClient);
- constructor() { }
- getMovieList(): Observable<Movie[]> {
- return this.http.get<Movie[]>(`${this.API_URL}`);
+  constructor() { }
+  getMovieList(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(`${this.API_URL}`);
+  }
+  deleteMovie(movieId: number): Observable<Movie> {
+    return this.http.delete<Movie>(`${this.API_URL}/movies/${movieId}/`)
   }
 }

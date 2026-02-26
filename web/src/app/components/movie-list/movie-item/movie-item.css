@@ -1,8 +1,17 @@
-host {
+:host {
  display: flex;
  width: 100%;
+ 
 }
 .card-text{
     font-size: 0.9rem;
     font-family: 'Supernova', sans-serif;
+}
+.card{
+    border: 2px solid #ccc !important;
+}
+/* NEW */
+.header-section {
+ display: flex;
+ justify-content: space-between;
 }

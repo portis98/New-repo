@@ -18,7 +18,7 @@ export class MovieList implements OnInit, OnDestroy {
   constructor(private api: MovieApi) {}
   ngOnInit(): void {
     console.log("MovieList initialized");
-    this.onGetMovieList();
+      this.onGetMovieList();
   }
     onGetMovieList(): void {
       this.subscription.add(
@@ -34,7 +34,21 @@ export class MovieList implements OnInit, OnDestroy {
       })
     );
   }
- ngOnDestroy(): void {
-  this.subscription.unsubscribe();
+  onDeleteMovie(movieId: number): void {
+    this.subscription.add(
+      this.api.deleteMovie(movieId).subscribe({
+        error: (e: HttpErrorResponse) => {
+          throw Error(
+            `Cannot connect to API: Error: ${e.status} - ${e.message}`
+          );
+        },
+        complete: () => {
+          this.onGetMovieList();
+        }
+      })
+    );
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
  }
 }
