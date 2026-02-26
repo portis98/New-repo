@@ -8,6 +8,7 @@
     font-family: 'Supernova', sans-serif;
 }
 .card{
+    flex: 1;
     border: 2px solid #ccc !important;
 }
 /* NEW */
