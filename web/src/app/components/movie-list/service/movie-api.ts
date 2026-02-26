@@ -12,7 +12,7 @@ export class MovieApi {
   private http: HttpClient = inject(HttpClient);
   constructor() { }
   getMovieList(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${this.API_URL}`);
+    return this.http.get<Movie[]>(`${this.API_URL}/`);
   }
   deleteMovie(movieId: number): Observable<Movie> {
     return this.http.delete<Movie>(`${this.API_URL}/${movieId}/`)

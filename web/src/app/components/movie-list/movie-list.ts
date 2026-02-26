@@ -5,10 +5,11 @@ import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MovieItem } from './movie-item/movie-item';
 import { signal } from '@angular/core';
+import { MovieModal } from '../movie-modal/movie-modal';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieItem],
+  imports: [MovieItem, MovieModal],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
 })
