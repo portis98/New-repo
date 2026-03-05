@@ -26,6 +26,7 @@ export class MovieModal {
     });
   }
   onSubmit(): void {
+    console.log("Submitting form with values:", this.addMovieForm.value);
     this.addMovieEvent.emit(this.addMovieForm.value);
   }
 }

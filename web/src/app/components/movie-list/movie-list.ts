@@ -21,6 +21,7 @@ export class MovieList implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log("MovieList initialized");
       this.onGetMovieList();
+      
   }
     onGetMovieList(): void {
       this.subscription.add(
@@ -52,8 +53,10 @@ export class MovieList implements OnInit, OnDestroy {
     );
   }
   onAddMovie(movie: Movie): void {
+    console.log("Adding movie:", movie);
     this.subscription.add(
       this.api.addMovie(movie).subscribe({
+        next: (res) =>console.log("Movie added successfully:", res),
         error: (e: HttpErrorResponse) => {
           console.log(e)
         },

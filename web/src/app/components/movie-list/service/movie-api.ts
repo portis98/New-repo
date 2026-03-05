@@ -19,11 +19,11 @@ export class MovieApi {
   }
   getChannelList(): Observable<StreamingChannel[]> {
     return this.http.get<StreamingChannel[]>(
-    `${this.API_URL}/movies/channels/`
+    `${this.API_URL}/channels/`
     )
   };
   addMovie(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(`${this.API_URL}/movies/`, movie)
-}
+    return this.http.post<Movie>(`${this.API_URL}/`, movie)
+  }
 }
   
