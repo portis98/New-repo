@@ -13,5 +13,5 @@ class MovieViewSet(viewsets.ModelViewSet):
     serializer_class = MovieSerializer
     #    permission_classes = (IsOwnerOrReadOnly,)
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(owner=self.request.user)

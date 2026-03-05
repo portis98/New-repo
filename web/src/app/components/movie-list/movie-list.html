@@ -15,5 +15,5 @@
             </div>  
         </div>
     </div>
-    <app-movie-modal [channelList]="channelList()"></app-movie-modal>
+    <app-movie-modal [channelList]="channelList()" (addMovieEvent)="onAddMovie($event)"></app-movie-modal>
 </div>

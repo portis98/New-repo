@@ -21,12 +21,14 @@ export class MovieModal {
  constructor(private formBuilder: FormBuilder) {
     this.addMovieForm = this.formBuilder.group({
     title: [''],
+    subtitle: [''],
+    director: [''],
     description: [''],
     streaming_channel: ['']
     });
   }
   onSubmit(): void {
-    console.log("Submitting form with values:", this.addMovieForm.value);
+    console.log('Payload inviato:', JSON.stringify(this.addMovieForm.value));
     this.addMovieEvent.emit(this.addMovieForm.value);
   }
 }
