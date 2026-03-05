@@ -30,5 +30,6 @@ export class MovieModal {
   onSubmit(): void {
     console.log('Payload inviato:', JSON.stringify(this.addMovieForm.value));
     this.addMovieEvent.emit(this.addMovieForm.value);
+    this.addMovieForm.reset();
   }
 }
